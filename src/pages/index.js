@@ -1,21 +1,40 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import {Container, Row, Col} from 'reactstrap';
+import "../assets/css/bootstrap.min.css"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
-
-export default IndexPage
+export default ({ data }) => {
+  return (
+    <Layout>
+      <SEO title="home" />
+      <h1>Learning Resource</h1>
+      <Container>
+        <Row>
+        {data.allWordpressCategory.edges.map(({ node }) => (
+          <Col sm="12" className="p-3 border mb-3" key={node.slug}>
+            <Link to={`category/${node.slug}`}><h3>{node.name}</h3></Link>
+            <p>{node.description}</p>  
+            <p className="text-center"><Link to={`category/${node.slug}`} className="btn btn-primary text-center text-light">Go to Lessons</Link></p>
+          </Col>
+          ))}
+        </Row>
+      </Container>
+    </Layout>
+  )
+}
+export const pageQuery = graphql`
+  query {
+    allWordpressCategory(filter: {slug: {ne: "uncategorize"}}) {
+      edges {
+        node {
+          name
+          slug
+          description
+          wordpress_id
+        }
+      }
+    }
+  }
+`
