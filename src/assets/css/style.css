@@ -1,3 +1,9 @@
+.font-10x{
+  font-size: 10rem;
+}
+.font-4x{
+  font-size: 4rem;
+}
 .outline-none{
   outline: none !important;
 }
