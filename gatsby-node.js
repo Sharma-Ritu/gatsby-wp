@@ -20,7 +20,7 @@ const result = await graphql(`
       }
     }
   }
-  allWordpressCategory(filter: {slug: {ne: "uncategorize"}}) {
+  allWordpressCategory(filter: {slug: {ne: "uncategorized"}}) {
     nodes {
       slug
       wordpress_id
@@ -44,8 +44,7 @@ BlogPosts.forEach(post => {
         path: `/post/${post.slug}`,
         component: BlogPostTemplate,
         context: {
-        	id: post.wordpress_id,
-        	/*cat_id: post.categories.wordpress_id*/
+        	id: post.wordpress_id
         }
     })
 })

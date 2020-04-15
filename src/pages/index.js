@@ -2,20 +2,20 @@ import React, { useState } from "react"
 import {Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {Row, Card, CardBody, Col, Collapse} from 'reactstrap'
+import {Row, Card, CardBody, Collapse} from 'reactstrap'
 import ReactHtmlParser from 'react-html-parser'
 import "../assets/css/style.css"
 import final_img from "../assets/img/Final_Homepage1.png"
 
 export default ({ data }) => {
-  const [collapse, setCollapse] = useState(1);
+  const [collapse, setCollapse] = useState(0);
   const toggle = (event) => {
     const activeBlock = parseInt(event.target.dataset.event)
-    //if(activeBlock===collapse){
-      //setCollapse(0)
-    //}else{
+    if(activeBlock===collapse){
+      setCollapse(0)
+    }else{
       setCollapse(parseInt(event.target.dataset.event))
-    //}
+    }
     console.log(collapse, activeBlock)
   };
   const rootCatLoop = data.allWordpressCategory.nodes
@@ -53,7 +53,7 @@ export default ({ data }) => {
                                   <CardBody>
                                     <Row>
                                         {root.childs.map((child,innerIndex)=>(
-                                           <Col key={child.wordpress_id} className="col-sm-6">
+                                           <div key={child.wordpress_id} className="col-6">
                                                 <Card className="mb-3 text-center">
                                                     <CardBody className="px-0">
                                                       <div className="mx-2 px-5">
@@ -64,7 +64,7 @@ export default ({ data }) => {
                                                       </Link>
                                                     </CardBody>
                                                 </Card>
-                                            </Col>
+                                            </div>
                                         ))}
                                     </Row>
                                   </CardBody>
