@@ -2,15 +2,7 @@ import React, {useState} from "react"
 import {graphql} from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Row,
-  Col
-} from 'reactstrap';
+import {TabContent, TabPane, Nav, NavItem, NavLink, Row, Col} from 'reactstrap';
 import "../assets/css/bootstrap.min.css"
 import ReactHtmlParser from 'react-html-parser'
 
@@ -24,7 +16,7 @@ export default({data}) => {
   console.log(data)
   return (<Layout>
     <SEO title={data.wordpressCategory.name} description={data.wordpressCategory.description}/>
-    <div className="container-fluid mt-2 px-3">
+    <div className="container-fluid my-2 px-3" style={{maxWidth:'1260px'}}>
       <Row className="no-gutters align-items-center">
         <div className="col-sm-1 px-3">
           <img alt={data.wordpressCategory.acf.cat_image.alt_text} src={data.wordpressCategory.acf.cat_image.localFile.publicURL} className="img-fluid" />
@@ -35,7 +27,7 @@ export default({data}) => {
       </Row>
     </div>
     <Row className="no-gutters">
-      <div className="col-md-4 p-3">
+      <div className="col-md-4 px-3 py-2">
         <Nav pills={true} className="flex-column text-left">
           {
             data.allWordpressPost.edges.map(({
@@ -53,7 +45,7 @@ export default({data}) => {
           }
         </Nav>
       </div>
-      <div className="col-md-8 p-3">
+      <div className="col-md-8 px-3 py-2">
         <TabContent activeTab={activeTab}>
           {
             data.allWordpressPost.edges.map(({
@@ -63,12 +55,12 @@ export default({data}) => {
                 <Col sm="12">
                   <h2 className="h2">{ReactHtmlParser(node.title)}</h2>
                   <p>
-                    By:
+                    By:&nbsp;
                     <span className="text-info">
-                      {node.author.name}</span>&nbsp; on &nbsp;
+                      {node.author.name}</span>&nbsp;on&nbsp;
                     <span className="text-dark">{node.date}</span>
                   </p>
-                  <p>In
+                  <p>In&nbsp;
                     <span className="text-info">{node.categories[0].name}
                     </span>
                   </p>
