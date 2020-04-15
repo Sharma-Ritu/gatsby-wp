@@ -1,0 +1,22 @@
+.outline-none{
+  outline: none !important;
+}
+.toggle-block{
+  position: relative;
+}
+.toggle-block::before, .toggle-block::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background-color: #212529;
+    top: 50%;
+}
+.toggle-block::before {
+    right: 20px;
+    transform: translateY(-50%) skewY(15deg);
+}
+.toggle-block::after {
+    right:0;
+    transform: translateY(-50%) skewY(-15deg);
+}

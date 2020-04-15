@@ -30,21 +30,27 @@ module.exports = {
     {
     	resolve: `gatsby-source-wordpress`,
         options: {
+            excludedRoutes: [
+              "**/settings",
+              "**/yoast/v1/configurator",
+              "**/yoast/v1/reindex_posts",
+              "**/yoast/v1/file_size",
+              "**/yoast/v1/statistics",
+              "**/yoast/v1/myyoast/connect",
+              "**/wp-graphql-gutenberg/v1/editor-posts",
+              "**/wp/v2/users/me",
+              "**/wp/v2/themes"
+            ],
             // Specify the URL of the WordPress source
             baseUrl: `innovagesoftwares.com/private_lectures`,
-            protocol: `http`,
+            protocol: `https`,
             // Indicates if a site is hosted on WordPress.com
             hostingWPCOM: false,
-            // Specify which URL structures to fetch
-            includedRoutes: [
-              "**/categories",
-		      "**/posts",
-		      "**/pages",
-		      "**/media",
-		      "**/tags",
-		      "**/taxonomies",
-		      "**/users",
-            ]
+            useACF: true,
+            // searchAndReplaceContentUrls: {
+            //   sourceUrl: "http://localhost/private-lectures/",
+            //   replacementUrl: "",
+            // },
         }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
