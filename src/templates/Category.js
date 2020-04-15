@@ -13,14 +13,17 @@ export default({data}) => {
     if (activeTab !== tab)
       setActiveTab(tab);
     }
-  console.log(data)
+  console.log(data.wordpressCategory.acf)
   return (<Layout>
     <SEO title={data.wordpressCategory.name} description={data.wordpressCategory.description}/>
     <div className="container-fluid my-2 px-3" style={{maxWidth:'1260px'}}>
       <Row className="no-gutters align-items-center">
-        <div className="col-sm-1 px-3">
-          <img alt={data.wordpressCategory.acf.cat_image.alt_text} src={data.wordpressCategory.acf.cat_image.localFile.publicURL} className="img-fluid" />
-        </div>
+        {
+          data.wordpressCategory.acf!==null &&
+          <div className="col-sm-1 px-3">
+            <img alt={data.wordpressCategory.acf.cat_image.alt_text} src={data.wordpressCategory.acf.cat_image.localFile.publicURL} className="img-fluid" />
+          </div>
+        }
         <div className="col">
           <h1 className="mb-0">{data.wordpressCategory.name}</h1>
         </div>
