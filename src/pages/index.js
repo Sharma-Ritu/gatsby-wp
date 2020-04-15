@@ -8,14 +8,14 @@ import "../assets/css/style.css"
 import final_img from "../assets/img/Final_Homepage1.png"
 
 export default ({ data }) => {
-  const [collapse, setCollapse] = useState(0);
+  const [collapse, setCollapse] = useState(1);
   const toggle = (event) => {
     const activeBlock = parseInt(event.target.dataset.event)
-    if(activeBlock===collapse){
-      setCollapse(0)
-    }else{
+    //if(activeBlock===collapse){
+      //setCollapse(0)
+    //}else{
       setCollapse(parseInt(event.target.dataset.event))
-    }
+    //}
     console.log(collapse, activeBlock)
   };
   const rootCatLoop = data.allWordpressCategory.nodes

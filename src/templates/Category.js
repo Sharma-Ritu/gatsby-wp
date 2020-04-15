@@ -24,7 +24,7 @@ export default({data}) => {
   console.log(data)
   return (<Layout>
     <SEO title={data.wordpressCategory.name} description={data.wordpressCategory.description}/>
-    <div className="container-fluid px-3">
+    <div className="container-fluid mt-2 px-3">
       <Row className="no-gutters align-items-center">
         <div className="col-sm-1 px-3">
           <img alt={data.wordpressCategory.acf.cat_image.alt_text} src={data.wordpressCategory.acf.cat_image.localFile.publicURL} className="img-fluid" />
